@@ -32,10 +32,10 @@ public static class NpoiLib
         cellStyleBody.BorderRight = BorderStyle.Thin;
         cellStyleBody.BorderBottom = BorderStyle.Thin;
 
-        XSSFFont ffont = (XSSFFont)workbook.CreateFont();
-        ffont.FontHeight = 220;
-        ffont.IsBold = true;
-        cellStyleHeader.SetFont(ffont);
+        XSSFFont font = (XSSFFont)workbook.CreateFont();
+        font.FontHeight = 220;
+        font.IsBold = true;
+        cellStyleHeader.SetFont(font);
 
         ICell cell;
 
