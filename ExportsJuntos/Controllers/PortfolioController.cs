@@ -1,6 +1,4 @@
-﻿using BenchmarkDotNet.Running;
-using ExportsJuntos.Benchmark;
-using ExportsJuntos.Fakes;
+﻿using ExportsJuntos.Fakes;
 using ExportsJuntos.Infra.Files.Writer;
 using ExportsJuntos.Repositories;
 using ExportsJuntos.Results;
