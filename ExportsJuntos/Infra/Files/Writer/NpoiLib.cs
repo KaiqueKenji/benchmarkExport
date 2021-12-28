@@ -18,12 +18,6 @@ public static class NpoiLib
 
         var row = sheet.CreateRow(rowNumber);
 
-        var styleHeader = workbook.CreateCellStyle();
-        var font = workbook.CreateFont();
-        font.Color = HSSFColor.Blue.Index2;
-        styleHeader.FillForegroundColor = HSSFColor.Grey25Percent.Index;
-        styleHeader.FillPattern = FillPattern.SolidForeground;
-
         XSSFCellStyle cellStyleHeader = (XSSFCellStyle)workbook.CreateCellStyle();
         cellStyleHeader.Alignment = HorizontalAlignment.Center;
         cellStyleHeader.BorderLeft = BorderStyle.Thin;
@@ -50,7 +44,6 @@ public static class NpoiLib
         {
             cell = row.CreateCell(i);
             cell.SetCellValue(headers[i]);
-            cell.CellStyle = styleHeader;
             cell.CellStyle = cellStyleHeader;
         }
         var column = 0;

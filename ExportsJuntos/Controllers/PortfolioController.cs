@@ -37,19 +37,8 @@ namespace ExportsJuntos.Controllers
         /// <summary>
         /// Método que adiciona um portfolio
         /// </summary>
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpGet("v1/benchmark")]
-        public void RunBenchmark()
-        {
-            BenchmarkRunner.Run<BenchmarkTests>();
-        }
-
-            /// <summary>
-            /// Método que adiciona um portfolio
-            /// </summary>
-            /// <returns>Id</returns>
-            [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(PortfolioResult))]
+        /// <returns>Id</returns>
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(PortfolioResult))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet("v1/portfolios")]
         public IActionResult ClosedXmlLib([FromQuery] string outputFormat)

@@ -33,11 +33,9 @@ public class Repository
             worksheet.Cells[1, i].Style.Border.BorderAround(ExcelBorderStyle.Thin);
         }
 
-        //Define propriedades da planilha
         worksheet.TabColor = System.Drawing.Color.Black;
         worksheet.DefaultRowHeight = 12;
 
-        //Define propriedades da primeira linha
         worksheet.Row(1).Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
         worksheet.Row(1).Style.Font.Bold = true;
 
@@ -180,7 +178,8 @@ public class Repository
         var column = 1;
         foreach (var header in headers)
         {
-            worksheet.Cell(row: 1, column++)
+            worksheet
+                .Cell(row: 1, column++)
                 .SetValue(header)
                 .Style
                 .Font.SetBold(true)
@@ -228,10 +227,6 @@ public class Repository
 
         var row = sheet.CreateRow(rowNumber);
 
-        var styleHeader = workbook.CreateCellStyle();
-        styleHeader.FillForegroundColor = HSSFColor.Grey25Percent.Index;
-        styleHeader.FillPattern = FillPattern.SolidForeground;
-
         XSSFCellStyle cellStyleHeader = (XSSFCellStyle)workbook.CreateCellStyle();
         cellStyleHeader.Alignment = HorizontalAlignment.Center;
         cellStyleHeader.BorderLeft = BorderStyle.Thin;
@@ -246,10 +241,10 @@ public class Repository
         cellStyleBody.BorderRight = BorderStyle.Thin;
         cellStyleBody.BorderBottom = BorderStyle.Thin;
 
-        XSSFFont ffont = (XSSFFont)workbook.CreateFont();
-        ffont.FontHeight = 220;
-        ffont.IsBold = true;
-        cellStyleHeader.SetFont(ffont);
+        XSSFFont font = (XSSFFont)workbook.CreateFont();
+        font.FontHeight = 220;
+        font.IsBold = true;
+        cellStyleHeader.SetFont(font);
 
         ICell cell;
 
@@ -258,7 +253,6 @@ public class Repository
         {
             cell = row.CreateCell(i);
             cell.SetCellValue(headers[i]);
-            cell.CellStyle = styleHeader;
             cell.CellStyle = cellStyleHeader;
         }
         var column = 0;
