@@ -58,35 +58,30 @@ public static class NpoiLib
         foreach (var portfolio in portfolios)
         {
             column = 0;
-            CreateNewRow(rowNumber);
-            SetCell(portfolio.PortfolioName, 0);
-            SetCell(portfolio.Description, 1);
-            SetCell(portfolio.CurrencyId.ToString(), 2);
-            SetCell(portfolio.AssetName, 3);
-            SetCell(portfolio.Date.ToString(), 4);
-            SetCell(portfolio.PortfolioTypeId.ToString(), 5);
-            SetCell(portfolio.TenantId.ToString(), 6);
-            SetCell(portfolio.ManagerId.ToString(), 7);
-            SetCell(portfolio.CountryId.ToString(), 8);
-            SetCell(portfolio.Name, 9);
-            SetCell(portfolio.Nickname, 10);
-            SetCell(portfolio.BirthDate.ToString(), 11);
-            SetCell(portfolio.Age.ToString(), 12);
-            SetCell(portfolio.Document, 13);
+            row = sheet.CreateRow(rowNumber);
+            SetCell(portfolio.PortfolioName);
+            SetCell(portfolio.Description);
+            SetCell(portfolio.CurrencyId.ToString());
+            SetCell(portfolio.AssetName);
+            SetCell(portfolio.Date.ToString());
+            SetCell(portfolio.PortfolioTypeId.ToString());
+            SetCell(portfolio.TenantId.ToString());
+            SetCell(portfolio.ManagerId.ToString());
+            SetCell(portfolio.CountryId.ToString());
+            SetCell(portfolio.Name);
+            SetCell(portfolio.Nickname);
+            SetCell(portfolio.BirthDate.ToString());
+            SetCell(portfolio.Age.ToString());
+            SetCell(portfolio.Document);
             rowNumber++;
 
-            void SetCell(string value, int columns)
+            void SetCell(string value)
             {
-                var cells = row.CreateCell(columns);
+                var cells = row.CreateCell(column);
                 cells.SetCellValue(value);
                 cells.CellStyle = cellStyleBody;
-                //setCellStyle(workbook, cells);
-                sheet.SetColumnWidth(columns, 5500);
-            }
-
-            void CreateNewRow(int rowNumbers)
-            {
-                row = sheet.CreateRow(rowNumbers);
+                sheet.SetColumnWidth(column, 5500);
+                column++;
             }
         }
 

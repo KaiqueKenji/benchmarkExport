@@ -36,4 +36,3 @@ public class Benchmarks
         Teste.CriarPlanilhaNpoi(_portfolios);
     }
 }
-
